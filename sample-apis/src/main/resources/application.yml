@@ -1,0 +1,27 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+env: ${ENV:local}
+
+#kafka config
+bootstrap-servers: ${bootstrap_servers:localhost:9092}
+kafka:
+  topic:
+    input: ${kafka_input_topic:${env}.input.topic}
+
+#postgres config
+postgres:
+  url: ${postgres_url:jdbc:postgresql://localhost:5432/postgres}
+  user: ${postgres_user:postgres}
+  password: ${postgres_password:postgres}
+  tablename: ${postgres_tablename:request_data}
+
+#elasticsearch config
+es:
+  host: ${es_host:localhost}
+  port: ${es_port:9200}
+
+#redis config
+redis:
+  host: ${redis_host:localhost}
+  port: ${redis_port:6379}
