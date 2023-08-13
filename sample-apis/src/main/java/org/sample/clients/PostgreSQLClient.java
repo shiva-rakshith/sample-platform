@@ -17,7 +17,6 @@ public class PostgreSQLClient {
         this.url = url;
         this.user = user;
         this.password = password;
-        initializeConnection();
     }
 
     private void initializeConnection() throws ServerException {

@@ -1,6 +1,7 @@
 package org.sample.config;
 
 import org.sample.clients.AuditIndexer;
+import org.sample.clients.ElasticSearchClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,5 +18,10 @@ public class AuditIndexerConfiguration {
     @Bean
     public AuditIndexer auditIndexer() throws Exception {
         return new AuditIndexer(esHost, esPort, "request_audit", "request_audit");
+    }
+
+    @Bean
+    public ElasticSearchClient elasticSearchClient() throws Exception {
+        return new ElasticSearchClient(esHost, esPort);
     }
 }

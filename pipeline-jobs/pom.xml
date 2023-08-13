@@ -16,7 +16,7 @@
         Datapipeline Flink jobs for stream processing
     </description>
     <modules>
-        <module>sample-pipeline-jobs</module>
+        <module>sample-pipeline-job</module>
     </modules>
     <properties>
         <!-- maven specific properties -->
