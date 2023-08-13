@@ -36,19 +36,25 @@ public class BaseController {
         requestBody.put("ets", System.currentTimeMillis());
         String requestStr = JSONUtils.serialize(requestBody);
 
+        System.out.println("Processsing request, Mid: " + mid);
+
         //push request data to redis
         redisClient.set(mid, requestStr, 36000);
+        System.out.println("Data pushed to redis");
 
         //push request data to postgres
         String query = String.format("INSERT INTO %s (mid,data) VALUES ('%s','%s')", postgresTable, mid, requestStr);
         System.out.println(query);
         postgreSQLClient.execute(query);
+        System.out.println("Data pushed to Postgres");
 
         //push request data to kafka
         kafkaClient.send(kafkaTopic, mid, requestStr);
+        System.out.println("Data pushed to Kafka");
 
         //push request data to elastic search
         auditIndexer.createDocument(requestBody);
+        System.out.println("Data pushed to Elastic Search");
     }
 }
 

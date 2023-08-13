@@ -12,7 +12,6 @@ import scala.Option;
 import scala.Some;
 
 import java.io.File;
-import java.util.Map;
 
 public class SampleStreamTask {
 

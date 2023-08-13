@@ -12,5 +12,6 @@
 
     <modules>
         <module>sample-apis</module>
+        <module>pipeline-jobs</module>
     </modules>
 </project>
