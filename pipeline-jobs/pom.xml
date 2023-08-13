@@ -17,6 +17,7 @@
     </description>
     <modules>
         <module>sample-pipeline-job</module>
+        <module>jobs-distribution</module>
     </modules>
     <properties>
         <!-- maven specific properties -->

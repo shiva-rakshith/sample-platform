@@ -6,12 +6,11 @@ services:
     environment:
       - discovery.type=single-node
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      - ELASTIC_PASSWORD=${ELASTIC_SEARCH_PASSWORD}
       - xpack.security.enabled=${ELASTIC_SECURITY_ENABLED-false}
     ports:
       - "9200:9200"
       - "9300:9300"
-  db:
+  postgres:
     image: postgres
     volumes:
       - ./${DB_DIR-db-data}:/var/lib/postgresql/data
@@ -46,3 +45,23 @@ services:
     image: redis:latest
     ports:
       - "6379:6379"
+  apis:
+    image: shiva54321/sample-apis:latest
+    ports:
+      - "8080:8080"
+    environment:
+      bootstrap_servers: "kafka:9092"
+      postgres_url: "jdbc:postgresql://postgres:5432/postgres"
+      postgres_user: "postgres"
+      postgres_password: "postgres"
+      es_host: "es"
+      redis_host: "redis"
+    depends_on:
+      kafka:
+        condition: service_started
+      redis:
+        condition: service_started
+      es:
+        condition: service_started
+      postgres:
+        condition: service_started

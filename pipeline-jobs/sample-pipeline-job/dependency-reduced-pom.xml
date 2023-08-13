@@ -76,7 +76,7 @@
               </filters>
               <transformers>
                 <transformer>
-                  <mainClass>org.swasth.dp.notification.trigger.task.NotificationTriggerStreamTask</mainClass>
+                  <mainClass>org.sample.dp.task.SampleStreamTask</mainClass>
                 </transformer>
               </transformers>
             </configuration>
