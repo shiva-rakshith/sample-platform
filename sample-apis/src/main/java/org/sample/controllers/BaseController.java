@@ -34,6 +34,7 @@ public class BaseController {
     public void processRequest(Map<String,Object> requestBody) throws Exception {
         String mid = UUID.randomUUID().toString();
         requestBody.put("ets", System.currentTimeMillis());
+        requestBody.put("mid", mid);
         String requestStr = JSONUtils.serialize(requestBody);
 
         System.out.println("Processsing request, Mid: " + mid);
